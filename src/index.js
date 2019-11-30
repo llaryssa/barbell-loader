@@ -121,21 +121,21 @@ export default class App extends Component {
           <div>
             {output.converted && (
               <span>
-                Convertido: {output.converted}
+                Convertido: {output.converted.toFixed(1)}
                 {outputUnit}
               </span>
             )}
             <br />
             {output.final && (
               <span>
-                Final: {output.final}
+                Final: {output.final.toFixed(1)}
                 {outputUnit}
               </span>
             )}
             <br />
             {output.eachSide && (
               <span>
-                De cada lado: {output.eachSide}
+                De cada lado: {output.eachSide.toFixed(1)}
                 {outputUnit}
               </span>
             )}
