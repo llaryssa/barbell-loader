@@ -1,8 +1,67 @@
-html, body {
-	font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
-	font-weight: 400;
+/* color: #f4511e */
+
+html,
+body {
+  font: 14px/1.21 "Helvetica Neue", arial, sans-serif;
+  font-weight: 400;
 }
 
 h1 {
-	text-align: center;
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selection-group {
+  display: inline-flex;
+  border: 1px solid #acb3c2;
+  border-radius: 4px;
+}
+
+.selection-group__item {
+	padding: 8px 12px;
+	/* height: fit-content; */
+	/* height: 36px;
+	min-width: 42px;
+	display: flex;
+  align-items: center;
+	justify-content: center; */
+}
+
+.selection-group__item.checked {
+  padding: 8px 12px;
+  background-color: #f4511e;
+  color: white;
+}
+
+.selection-group__item.checked.left {
+  padding: 8px 12px;
+  background-color: #f4511e;
+  color: white;
+	border-radius: 3px 0 0 3px;
+}
+
+.selection-group__item.checked.right {
+  padding: 8px 12px;
+  background-color: #f4511e;
+  color: white;
+  border-radius: 0 3px 3px 0;
+}
+
+.number-input:focus {
+	border-color: #f9a186;
+
+}
+
+.number-input__weight {
+	width: 96px;
+}
+
+.first-row {
+	display: inline-flex;
+	
 }

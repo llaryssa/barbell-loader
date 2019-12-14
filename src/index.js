@@ -1,5 +1,11 @@
-import "./style";
 import { Component } from "preact";
+import { Icon } from "preact-fluid";
+
+import SelectionGroup from "./components/SelectionGroup";
+import NumberInput from "./components/NumberInput";
+
+
+import "./style";
 
 var kgToLbRatio = 2.20462;
 
@@ -64,36 +70,51 @@ export default class App extends Component {
   ) {
     console.log({ weight, percentage, inputUnit, output });
     return (
-      <div>
+      <div className="app-container">
         <h2>Barbell Loader</h2>
-        Peso{" "}
-        <NumberInput
-          value={weight}
-          onChange={weight => this.setState({ weight })}
-        />
-        <br />
-        Porcentagem{" "}
+        <div className="first-row">
+          <NumberInput
+            className="number-input__weight"
+            value={weight}
+            placeholder="Peso"
+            onChange={weight => this.setState({ weight })}
+          />
+          <SelectionGroup
+            name="inputWeightUnit"
+            defaultChecked={inputUnit}
+            values={weightUnitRadio}
+            onChange={inputUnit => this.setState({ inputUnit })}
+          />
+            <Icon
+        name="edit"
+        size="small"
+    />
+          <SelectionGroup
+            name="outputWeightUnit"
+            defaultChecked={outputUnit}
+            values={weightUnitRadio}
+            onChange={outputUnit => this.setState({ outputUnit })}
+          />
+        </div>
+
         <NumberInput
           value={percentage}
+          placeholder="Porcentagem"
           onChange={percentage => this.setState({ percentage })}
         />
-        <br />
-        Input Unit <br />
-        <RadioGroup
+        <SelectionGroup
           name="inputWeightUnit"
           defaultChecked={inputUnit}
           values={weightUnitRadio}
           onChange={inputUnit => this.setState({ inputUnit })}
         />
-        Result Unit <br />
-        <RadioGroup
+        <SelectionGroup
           name="outputWeightUnit"
           defaultChecked={outputUnit}
           values={weightUnitRadio}
           onChange={outputUnit => this.setState({ outputUnit })}
         />
-        Barbell Type <br />
-        <RadioGroup
+        <SelectionGroup
           name="barbellType"
           defaultChecked={barbellType}
           values={barbellTypeRadio}
@@ -142,41 +163,6 @@ export default class App extends Component {
             <br />
           </div>
         )}
-      </div>
-    );
-  }
-}
-
-class NumberInput extends Component {
-  render({ value, onChange }) {
-    return (
-      <input
-        value={value}
-        type="number"
-        onInput={event => onChange(event.target.value)}
-      />
-    );
-  }
-}
-
-class RadioGroup extends Component {
-  render({ name, values, defaultChecked, onChange }) {
-    if (!values || !values.length) return null;
-
-    return (
-      <div>
-        {values.map(({ value, title }) => (
-          <div>
-            <input
-              type="radio"
-              name={name}
-              value={value}
-              checked={defaultChecked === value}
-              onChange={event => onChange(event.target.value)}
-            />
-            {title}
-          </div>
-        ))}
       </div>
     );
   }
