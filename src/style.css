@@ -24,12 +24,10 @@ h1 {
 
 .selection-group__item {
   padding: 8px 12px;
-  /* height: fit-content; */
-  /* height: 36px;
-	min-width: 42px;
-	display: flex;
-  align-items: center;
-	justify-content: center; */
+}
+
+.selection-group__item:hover {
+  cursor: pointer;
 }
 
 .selection-group__item.checked {
