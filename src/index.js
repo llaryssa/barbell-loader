@@ -1,11 +1,11 @@
 import { Component } from "preact";
-import { Icon } from "preact-fluid";
 
 import SelectionGroup from "./components/SelectionGroup";
 import NumberInput from "./components/NumberInput";
 
-
 import "./style";
+import Icon from "./components/Icon";
+import { Button } from "preact-fluid";
 
 var kgToLbRatio = 2.20462;
 
@@ -72,58 +72,60 @@ export default class App extends Component {
     return (
       <div className="app-container">
         <h2>Barbell Loader</h2>
-        <div className="first-row">
+        <br />
+        <div className="two-elements-centered">
+          <Icon src="assets/scale.svg" />
           <NumberInput
             className="number-input__weight"
             value={weight}
             placeholder="Peso"
             onChange={weight => this.setState({ weight })}
           />
-          <SelectionGroup
-            name="inputWeightUnit"
-            defaultChecked={inputUnit}
-            values={weightUnitRadio}
-            onChange={inputUnit => this.setState({ inputUnit })}
-          />
-            <Icon
-        name="edit"
-        size="small"
-    />
-          <SelectionGroup
-            name="outputWeightUnit"
-            defaultChecked={outputUnit}
-            values={weightUnitRadio}
-            onChange={outputUnit => this.setState({ outputUnit })}
+        </div>
+        <br />
+        <div className="two-elements-centered">
+          <Icon src="assets/kgs.svg" />
+          <div className="conversion-section">
+            <SelectionGroup
+              name="inputWeightUnit"
+              defaultChecked={inputUnit}
+              values={weightUnitRadio}
+              onChange={inputUnit => this.setState({ inputUnit })}
+            />
+            <Icon src="assets/arrow-right.svg" />
+            <SelectionGroup
+              name="outputWeightUnit"
+              defaultChecked={outputUnit}
+              values={weightUnitRadio}
+              onChange={outputUnit => this.setState({ outputUnit })}
+            />
+          </div>
+        </div>
+        <br />
+        <div className="two-elements-centered">
+          <Icon src="assets/percent.svg" />
+          <NumberInput
+            className="number-input__weight"
+            value={percentage}
+            placeholder="Porcentagem"
+            onChange={percentage => this.setState({ percentage })}
           />
         </div>
-
-        <NumberInput
-          value={percentage}
-          placeholder="Porcentagem"
-          onChange={percentage => this.setState({ percentage })}
-        />
-        <SelectionGroup
-          name="inputWeightUnit"
-          defaultChecked={inputUnit}
-          values={weightUnitRadio}
-          onChange={inputUnit => this.setState({ inputUnit })}
-        />
-        <SelectionGroup
-          name="outputWeightUnit"
-          defaultChecked={outputUnit}
-          values={weightUnitRadio}
-          onChange={outputUnit => this.setState({ outputUnit })}
-        />
-        <SelectionGroup
-          name="barbellType"
-          defaultChecked={barbellType}
-          values={barbellTypeRadio}
-          onChange={barbellType => this.setState({ barbellType })}
-        />
         <br />
-        <button
+        <div className="two-elements-centered">
+          <Icon src="assets/barbell.svg" />
+          <SelectionGroup
+            name="barbellType"
+            defaultChecked={barbellType}
+            values={barbellTypeRadio}
+            onChange={barbellType => this.setState({ barbellType })}
+          />
+        </div>
+        <br />
+        <Button
+          className="button"
+          disabled={!weight}
           onClick={() => {
-            // checar se tem todos os campos?
             var output = doStuff(
               weight,
               percentage,
@@ -136,7 +138,8 @@ export default class App extends Component {
           }}
         >
           Calculate
-        </button>
+        </Button>
+
         <br />
         {output && (
           <div>
