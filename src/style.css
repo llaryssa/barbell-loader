@@ -85,3 +85,7 @@ h1 {
   border: 1px solid #f4511e;
   color: #f4511e;
 }
+
+.result-div {
+  font-size: 14px;
+}

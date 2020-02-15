@@ -142,7 +142,7 @@ export default class App extends Component {
 
         <br />
         {output && (
-          <div>
+          <div className="result-div">
             {output.converted && (
               <span>
                 Convertido: {output.converted.toFixed(1)}
