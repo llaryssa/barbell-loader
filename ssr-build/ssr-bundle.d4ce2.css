@@ -55,11 +55,15 @@ h1 {
 }
 
 .number-input:focus {
-  border-color: #959594;
+  border-color: #959594 !important;
 }
 
 .number-input__weight {
   width: 95px;
+  border: 1px solid #acb3c2;
+  border-radius: 4px;
+  font-size: 14px !important;
+  padding: 8px;
 }
 
 .first-row {
@@ -89,8 +93,24 @@ h1 {
 }
 
 .button {
-  border: 1px solid #f4511e;
-  color: #f4511e;
+  border: 1px solid #f4511e !important;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px !important;
+  color: #f4511e !important;
+  padding: 8px;
+  min-width: 90px;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #fdf7f5;
+}
+
+.button:disabled {
+  border: 1px solid #fbb59f !important;
+  color: #fbb59f !important;
+  cursor: default;
 }
 
 .result-div {
@@ -98,4 +118,4 @@ h1 {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.6cb01.css.map*/
+/*# sourceMappingURL=ssr-bundle.d4ce2.css.map*/
