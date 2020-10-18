@@ -11,12 +11,16 @@ h1 {
 }
 
 .app-container {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .selection-group {
+  display: -ms-inline-flexbox;
   display: inline-flex;
   border: 1px solid #acb3c2;
   border-radius: 4px;
@@ -59,6 +63,7 @@ h1 {
 }
 
 .first-row {
+  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
@@ -71,14 +76,16 @@ h1 {
   display: inline-grid;
   grid-template-columns: auto 24px auto;
   grid-column-gap: 8px;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .two-elements-centered {
   display: inline-grid;
   grid-template-columns: auto auto;
   grid-column-gap: 8px;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .button {
@@ -89,3 +96,6 @@ h1 {
 .result-div {
   font-size: 14px;
 }
+
+
+/*# sourceMappingURL=ssr-bundle.6cb01.css.map*/

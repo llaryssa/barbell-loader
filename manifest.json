@@ -1,7 +1,7 @@
 {
   "name": "barbell-loader",
   "short_name": "barbell-loader",
-  "start_url": "/",
+  "start_url": "/barbell-loader/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
