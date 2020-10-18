@@ -29,6 +29,8 @@ var convertWeight = (weight, inputUnit, outputUnit) => {
   if (inputUnit === 'lb' && outputUnit === 'kg') return weight / kgToLbRatio
 }
 
+var formatDisplayNumber = number => number.toFixed(2)
+
 function doStuff(
   weightString,
   percentageString,
@@ -36,8 +38,8 @@ function doStuff(
   inputUnit,
   outputUnit
 ) {
-  var weight = parseInt(weightString)
-  var percentage = parseInt(percentageString)
+  var weight = parseFloat(weightString)
+  var percentage = parseFloat(percentageString)
   var barbellWeight = getBarbellWeight(barbellType, outputUnit)
   var willConvert = inputUnit != outputUnit
   var willApplyPercentage = percentage !== 100
@@ -144,21 +146,21 @@ export default class App extends Component {
           <div className="result-div">
             {output.converted && (
               <span>
-                Convertido: {output.converted.toFixed(1)}
+                Convertido: {formatDisplayNumber(output.converted)}
                 {outputUnit}
               </span>
             )}
             <br />
             {output.final && (
               <span>
-                Final: {output.final.toFixed(1)}
+                Final: {formatDisplayNumber(output.final)}
                 {outputUnit}
               </span>
             )}
             <br />
             {output.eachSide && (
               <span>
-                De cada lado: {output.eachSide.toFixed(1)}
+                De cada lado: {formatDisplayNumber(output.eachSide)}
                 {outputUnit}
               </span>
             )}
