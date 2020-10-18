@@ -1,13 +1,11 @@
-name: github pages
-
+name: GitHub Pages
 on:
-  push:
-    branches:
-    - test
+  - push
 
 jobs:
   build-deploy:
     runs-on: ubuntu-18.04
+    if: github.ref == 'refs/heads/test'
     steps:
     - uses: actions/checkout@v1
 
