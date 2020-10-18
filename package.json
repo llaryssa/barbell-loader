@@ -26,10 +26,15 @@
     "preact": "^10.5.5",
     "preact-cli": "^3.0.3",
     "preact-compat": "^3.19.0",
-    "preact-fluid": "^0.9.1",
     "preact-render-to-string": "^5.1.10"
   },
   "devDependencies": {
     "dot-json": "^1.2.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "arrowParens": "avoid",
+    "trailingComma": "none"
   }
 }

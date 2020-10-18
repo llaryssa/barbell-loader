@@ -1,8 +1,7 @@
-import { Component } from "preact";
-import { Image } from "preact-fluid";
+import { Component } from 'preact'
 
 export default class Icon extends Component {
   render({ src }) {
-    return <Image className="image-icon" src={src} />;
+    return <img className="image-icon" src={src} />
   }
 }

@@ -1,34 +1,33 @@
-import { Component } from "preact";
-import { Button } from "preact-fluid";
+import { Component } from 'preact'
 
-import SelectionGroup from "./components/SelectionGroup";
-import NumberInput from "./components/NumberInput";
-import Icon from "./components/Icon";
+import SelectionGroup from './components/SelectionGroup'
+import NumberInput from './components/NumberInput'
+import Icon from './components/Icon'
 
-import baseroute from './baseroute';
-import "./style";
+// import baseroute from './baseroute';
+import './style'
 
-var kgToLbRatio = 2.20462;
+var kgToLbRatio = 2.20462
 
 var weightUnitRadio = [
-  { value: "kg", title: "Kg" },
-  { value: "lb", title: "Lb" }
-];
+  { value: 'kg', title: 'Kg' },
+  { value: 'lb', title: 'Lb' }
+]
 
 var barbellTypeRadio = [
-  { value: "female", title: "Feminina (35lb/15kg)" },
-  { value: "male", title: "Masculina (45lb/20kg)" }
-];
+  { value: 'female', title: 'Feminina (35lb/15kg)' },
+  { value: 'male', title: 'Masculina (45lb/20kg)' }
+]
 
 var getBarbellWeight = (type, unit) => {
-  if (unit === "lb") return type === "female" ? 35 : 45;
-  if (unit === "kg") return type === "female" ? 15 : 20;
-};
+  if (unit === 'lb') return type === 'female' ? 35 : 45
+  if (unit === 'kg') return type === 'female' ? 15 : 20
+}
 
 var convertWeight = (weight, inputUnit, outputUnit) => {
-  if (inputUnit === "kg" && outputUnit === "lb") return weight * kgToLbRatio;
-  if (inputUnit === "lb" && outputUnit === "kg") return weight / kgToLbRatio;
-};
+  if (inputUnit === 'kg' && outputUnit === 'lb') return weight * kgToLbRatio
+  if (inputUnit === 'lb' && outputUnit === 'kg') return weight / kgToLbRatio
+}
 
 function doStuff(
   weightString,
@@ -37,24 +36,24 @@ function doStuff(
   inputUnit,
   outputUnit
 ) {
-  var weight = parseInt(weightString);
-  var percentage = parseInt(percentageString);
-  var barbellWeight = getBarbellWeight(barbellType, outputUnit);
-  var willConvert = inputUnit != outputUnit;
-  var willApplyPercentage = percentage !== 100;
+  var weight = parseInt(weightString)
+  var percentage = parseInt(percentageString)
+  var barbellWeight = getBarbellWeight(barbellType, outputUnit)
+  var willConvert = inputUnit != outputUnit
+  var willApplyPercentage = percentage !== 100
 
   var convertedWeight = willConvert
     ? convertWeight(weight, inputUnit, outputUnit)
-    : weight;
+    : weight
   var finalWeight = willApplyPercentage
     ? (percentage * convertedWeight) / 100
-    : convertedWeight;
+    : convertedWeight
 
   return {
     converted: willConvert ? convertedWeight : undefined,
     final: finalWeight,
     eachSide: (finalWeight - barbellWeight) / 2
-  };
+  }
 }
 
 export default class App extends Component {
@@ -62,14 +61,13 @@ export default class App extends Component {
     {},
     {
       weight,
-      percentage = "100",
-      inputUnit = "kg",
-      outputUnit = "lb",
-      barbellType = "female",
+      percentage = '100',
+      inputUnit = 'kg',
+      outputUnit = 'lb',
+      barbellType = 'female',
       output
     }
   ) {
-    console.log({ weight, percentage, inputUnit, output });
     return (
       <div className="app-container">
         <h2>Barbell Loader</h2>
@@ -123,7 +121,7 @@ export default class App extends Component {
           />
         </div>
         <br />
-        <Button
+        <button
           className="button"
           disabled={!weight}
           onClick={() => {
@@ -133,13 +131,13 @@ export default class App extends Component {
               barbellType,
               inputUnit,
               outputUnit
-            );
-            this.setState({ output });
-            console.log({ output });
+            )
+            this.setState({ output })
+            console.log({ output })
           }}
         >
-          Calculate
-        </Button>
+          Calcular
+        </button>
 
         <br />
         {output && (
@@ -168,6 +166,6 @@ export default class App extends Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
