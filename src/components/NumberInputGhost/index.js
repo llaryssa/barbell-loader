@@ -11,10 +11,6 @@ export default class NumberInputGhost extends Component {
         value={value}
         type="number"
         onChange={event => onChange(event.target.value)}
-        // cell={{
-        //   middle: true,
-        //   width: 12
-        // }}
       />
     )
   }

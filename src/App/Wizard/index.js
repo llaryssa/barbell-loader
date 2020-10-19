@@ -1,6 +1,6 @@
 import { Component } from 'preact'
 
-import './style.css'
+import './style.scss'
 
 export default class Wizard extends Component {
   render({ number, title, children }) {

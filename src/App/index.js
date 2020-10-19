@@ -5,9 +5,10 @@ import NumberInput from '../components/NumberInput'
 import NumberInputGhost from '../components/NumberInputGhost'
 import Icon from '../components/Icon'
 
-import { calculateResults } from './helpers'
+import FirstStep from './FirstStep'
 import Wizard from './Wizard'
-import './style.css'
+import { calculateResults } from './helpers'
+import './style.scss'
 
 var weightUnitRadio = [
   { value: 'kg', title: 'Kg' },
@@ -40,7 +41,8 @@ export default class App extends Component {
           <h2>Barbell Loader</h2>
           <br />
           <Wizard number={1} title="Testing">
-            <NumberInputGhost
+            <FirstStep />
+            {/* <NumberInputGhost
             className="number-input-ghost"
               value={weight}
               placeholder="Peso ghost"
@@ -74,8 +76,13 @@ export default class App extends Component {
                   onChange={outputUnit => this.setState({ outputUnit })}
                 />
               </div>
-            </div>
+            </div> */}
           </Wizard>
+          <br />
+          <br />
+          <br />
+          <div style={{ height: '400px'}}></div>
+          <br />
           <br />
           <div className="two-elements-centered">
             <Icon src="assets/percent.svg" />

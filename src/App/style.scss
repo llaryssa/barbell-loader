@@ -1,14 +1,17 @@
-/* color: #f4511e */
+/****** COLORS ******/
 
-html,
-body {
-  font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
-  font-weight: 400;
-}
+$app-background-color: #262B4A;
+$app-background-darker-color: #1C1F35;
+$app-background-lighter-color: #202542;
 
-h1 {
-  text-align: center;
-}
+$app-color-1: #EE8434;
+$app-color-1-secondary: #F19955;
+
+$app-color-2: #A93F55;
+$app-color-3: #6290C8;
+
+$app-gray: #353E6E;
+$app-white: #FAFAFF;
 
 .app-container {
   display: flex;
@@ -79,20 +82,23 @@ h1 {
 /************** GHOST INPUT *************/
 
 .number-input-ghost {
-  min-width: 36px;
+  width: 96px;
   font-size: 36px;
   padding: 8px;
   border: 0;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid $app-background-lighter-color;
   outline: 0;
-}
+  background-color: $app-background-color;
+  color: $app-white;
+  margin-bottom: 8px;
 
-.number-input-ghost:hover {
-  border-bottom: 1px solid pink;
-}
+  &:hover {
+    border-bottom: 1px solid $app-background-darker-color;
+  }
 
-.number-input-ghost:focus {
-  border-bottom: 1px solid blue;
+  &:focus {
+    border-bottom: 1px solid $app-white;
+  }
 }
 
 /************** SELECTION GROUP *************/
@@ -103,20 +109,24 @@ h1 {
 
 .selection-group-item {
   padding: 8px 12px;
-  border: 1px solid #acb3c2;
   border-radius: 4px;
-}
+  background-color: $app-background-darker-color;
 
-.selection-group-item:hover {
-  cursor: pointer;
-}
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 2px $app-gray;
+  }
 
-.selection-group-item.left {
-  margin-right: 12px;
-}
+  &.left {
+    margin-right: 12px;
+  }
 
-.selection-group-item.checked {
-  padding: 8px 12px;
-  background-color: #f4511e;
-  color: white;
+  &.checked {
+    padding: 8px 12px;
+    box-shadow: 0 0 0 2px $app-color-1;
+
+    &:hover {
+      box-shadow: 0 0 0 2px $app-color-1-secondary;
+    }
+  }
 }
