@@ -28,7 +28,7 @@ jobs:
     - run: yarn run build:gh
 
     - name: Copy build files
-      run: mkdir build/barbell-loader && cp build/* build/barbell-loader
+      run: mkdir build/barbell-loader && find build -maxdepth 1 -type f | xargs -I {} cp {} build/barbell-loader
  
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
