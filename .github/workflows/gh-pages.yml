@@ -26,6 +26,9 @@ jobs:
     - run: yarn install
 
     - run: yarn run build:gh
+
+    - name: Copy build files
+      run: mkdir build/barbell-loader && cp build/* build/barbell-loader
  
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
