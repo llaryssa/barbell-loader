@@ -1,0 +1,18 @@
+.wizard-header-number {
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  border: 2px solid;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.wizard-header {
+  display: flex;
+  align-items: center;
+}
+
+.wizard-content {
+  padding: 8px 16px;
+}

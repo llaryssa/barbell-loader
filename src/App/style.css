@@ -2,7 +2,7 @@
 
 html,
 body {
-  font: 14px/1.21 "Helvetica Neue", arial, sans-serif;
+  font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
   font-weight: 400;
 }
 
@@ -14,40 +14,6 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.selection-group {
-  display: inline-flex;
-  border: 1px solid #acb3c2;
-  border-radius: 4px;
-}
-
-.selection-group__item {
-  padding: 8px 12px;
-}
-
-.selection-group__item:hover {
-  cursor: pointer;
-}
-
-.selection-group__item.checked {
-  padding: 8px 12px;
-  background-color: #f4511e;
-  color: white;
-}
-
-.selection-group__item.checked.left {
-  padding: 8px 12px;
-  background-color: #f4511e;
-  color: white;
-  border-radius: 3px 0 0 3px;
-}
-
-.selection-group__item.checked.right {
-  padding: 8px 12px;
-  background-color: #f4511e;
-  color: white;
-  border-radius: 0 3px 3px 0;
 }
 
 .number-input:focus {
@@ -108,4 +74,49 @@ h1 {
 
 .result-div {
   font-size: 14px;
+}
+
+/************** GHOST INPUT *************/
+
+.number-input-ghost {
+  min-width: 36px;
+  font-size: 36px;
+  padding: 8px;
+  border: 0;
+  border-bottom: 1px solid;
+  outline: 0;
+}
+
+.number-input-ghost:hover {
+  border-bottom: 1px solid pink;
+}
+
+.number-input-ghost:focus {
+  border-bottom: 1px solid blue;
+}
+
+/************** SELECTION GROUP *************/
+
+.selection-group {
+  display: inline-flex;
+}
+
+.selection-group-item {
+  padding: 8px 12px;
+  border: 1px solid #acb3c2;
+  border-radius: 4px;
+}
+
+.selection-group-item:hover {
+  cursor: pointer;
+}
+
+.selection-group-item.left {
+  margin-right: 12px;
+}
+
+.selection-group-item.checked {
+  padding: 8px 12px;
+  background-color: #f4511e;
+  color: white;
 }

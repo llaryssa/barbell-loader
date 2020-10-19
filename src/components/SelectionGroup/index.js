@@ -27,7 +27,7 @@ export default class SelectionGroup extends Component {
       <div className="selection-group">
         {values.map(({ value, title }) => (
           <div
-            className={cx('selection-group__item', {
+            className={cx('selection-group-item', {
               checked: defaultChecked === value,
               left: _.head(values).value === value,
               right: _.last(values).value === value
