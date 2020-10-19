@@ -9,7 +9,7 @@
     "serve": "preact build && preact serve",
     "dev": "preact watch",
     "lint": "eslint src",
-    "build:gh": "GITHUB_PAGES=barbell-loader preact build && dot-json ./build/manifest.json start_url \"/barbell-loader/\""
+    "build:gh": "GITHUB_PAGES=barbell-loader preact build && dot-json ./build/manifest.json start_url \"/\""
   },
   "eslintConfig": {
     "extends": "eslint-config-synacor"
