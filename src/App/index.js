@@ -1,4 +1,5 @@
 import { Component } from 'preact'
+import Helmet from 'preact-helmet'
 
 import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
@@ -17,6 +18,7 @@ export default class App extends Component {
   render({}, { step = 0, data = {}, percentages = [] }) {
     return (
       <div className="app-container">
+        <Helmet title="Calculadora de pesos" />
         <div className="app-container__content">
           <h2>Calculadora de pesos</h2>
           <br />
