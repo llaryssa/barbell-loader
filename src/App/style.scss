@@ -35,6 +35,7 @@ $app-white: #fafaff;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 24px;
+    margin-bottom: 48px;
 
     &__header {
       margin-bottom: 8px;
