@@ -10,31 +10,31 @@ var convertWeight = (weight, inputUnit, outputUnit) => {
   if (inputUnit === 'lb' && outputUnit === 'kg') return weight / kgToLbRatio
 }
 
-var calculateResults = (
-  weightString,
-  percentageString,
+var calculateResults = ({
+  weight,
   barbellType,
   inputUnit,
-  outputUnit
-) => {
-  var weight = parseFloat(weightString)
-  var percentage = parseFloat(percentageString)
+  outputUnit,
+  percentages
+}) => {
+  // var weight = parseFloat(weightString)
   var barbellWeight = getBarbellWeight(barbellType, outputUnit)
   var willConvert = inputUnit != outputUnit
-  var willApplyPercentage = percentage !== 100
 
-  var convertedWeight = willConvert
-    ? convertWeight(weight, inputUnit, outputUnit)
-    : weight
-  var finalWeight = willApplyPercentage
-    ? (percentage * convertedWeight) / 100
-    : convertedWeight
+  return percentages.map(percentage => {
+    var willApplyPercentage = percentage !== 100
 
-  return {
-    converted: willConvert ? convertedWeight : undefined,
-    final: finalWeight,
-    eachSide: (finalWeight - barbellWeight) / 2
-  }
+    var convertedWeight = willConvert
+      ? convertWeight(weight, inputUnit, outputUnit)
+      : weight
+    var total = willApplyPercentage
+      ? (percentage * convertedWeight) / 100
+      : convertedWeight
+
+      console.log({ willConvert, weight })
+
+    return { percentage, total, eachSide: (total - barbellWeight) / 2 }
+  })
 }
 
 module.exports = { calculateResults }

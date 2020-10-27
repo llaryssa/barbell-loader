@@ -1,3 +1,5 @@
+@import '../style';
+
 .wizard-header-number {
   border-radius: 50%;
   width: 28px;
@@ -6,6 +8,7 @@
   border: 2px solid;
   text-align: center;
   margin-right: 8px;
+  color: $app-color-3;
 }
 
 .wizard-header {
