@@ -4,7 +4,7 @@
   "start_url": "/barbell-loader/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff",
+  "background_color": "#262B4A",
   "theme_color": "#673ab8",
   "icons": [
     {
