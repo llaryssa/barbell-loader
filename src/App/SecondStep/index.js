@@ -2,10 +2,10 @@ import { Component } from 'preact'
 
 import NumberInputGhost from '../../components/NumberInputGhost'
 import CircleButton from '../../components/CircleButton'
-
-const marginStyle = { marginBottom: '32px' }
+import routes from '../routes'
 
 const defaultPercentageIncrease = 10
+const defaultPercentages = [50]
 
 const addNewPercentage = percentages => [
   ...percentages,
@@ -16,7 +16,18 @@ const changePercentage = (percentages, index, value) =>
   percentages.map((val, idx) => (index === idx ? Number(value) : val))
 
 export default class SecondStep extends Component {
-  render({ onSubmit }, { percentages = [50] }) {
+  componentDidMount() {
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const percentages = urlSearchParams
+      .getAll('percentage')
+      .map(number => Number(number))
+
+    this.setState({
+      percentages: percentages.length ? percentages : defaultPercentages
+    })
+  }
+
+  render({}, { percentages = [] }) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <h3>Quais as porcentagens do exercício?</h3>
@@ -49,8 +60,26 @@ export default class SecondStep extends Component {
           })}
         </div>
 
-        <CircleButton type="arrow" onClick={() => onSubmit(percentages)} />
+        <CircleButton
+          type="arrow"
+          onClick={() => {
+            window.location.assign(
+              `${routes.THIRD_STEP}?${this.getSearchString(percentages)}`
+            )
+          }}
+        />
       </div>
     )
+  }
+
+  getSearchString = percentages => {
+    const { search } = window.location
+    const searchParams = new URLSearchParams(search)
+    searchParams.delete('percentage')
+    percentages.forEach(percentage =>
+      searchParams.append('percentage', percentage)
+    )
+
+    return searchParams.toString()
   }
 }

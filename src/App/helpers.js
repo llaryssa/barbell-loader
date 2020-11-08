@@ -11,13 +11,13 @@ var convertWeight = (weight, inputUnit, outputUnit) => {
 }
 
 var calculateResults = ({
-  weight,
+  weight: weightString,
   barbellType,
   inputUnit,
   outputUnit,
   percentages
 }) => {
-  // var weight = parseFloat(weightString)
+  var weight = parseFloat(weightString)
   var barbellWeight = getBarbellWeight(barbellType, outputUnit)
   var willConvert = inputUnit != outputUnit
 
@@ -30,8 +30,6 @@ var calculateResults = ({
     var total = willApplyPercentage
       ? (percentage * convertedWeight) / 100
       : convertedWeight
-
-      console.log({ willConvert, weight })
 
     return { percentage, total, eachSide: (total - barbellWeight) / 2 }
   })

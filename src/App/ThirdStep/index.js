@@ -1,13 +1,28 @@
 import { Component } from 'preact'
 
 import CircleButton from '../../components/CircleButton'
+import { calculateResults } from '../helpers'
+import routes from '../routes'
 
 const formatNumber = number => (
   <span style={{ marginRight: '1px' }}>{Number(number.toFixed(2))}</span>
 )
 
 export default class ThirdStep extends Component {
-  render({ results, resultsUnit, onSubmit }) {
+  render({ weight, inputUnit, outputUnit, barbellType }) {
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    const percentages = urlSearchParams
+      .getAll('percentage')
+      .map(number => Number(number))
+
+    const results = calculateResults({
+      weight,
+      inputUnit,
+      outputUnit,
+      barbellType,
+      percentages
+    })
+
     return (
       <div className="results">
         <div className="results__table">
@@ -20,18 +35,21 @@ export default class ThirdStep extends Component {
                 <div>{formatNumber(percentage)}%</div>
                 <div>
                   {formatNumber(total)}
-                  {resultsUnit}
+                  {outputUnit}
                 </div>
                 <div>
-                  {formatNumber(eachSide)}
-                  {resultsUnit}
+                  {eachSide > 0 ? formatNumber(eachSide) : '--'}
+                  {eachSide > 0 && outputUnit}
                 </div>
               </>
             )
           })}
         </div>
 
-        <CircleButton type="home" onClick={onSubmit} />
+        <CircleButton
+          type="home"
+          onClick={() => window.location.assign(routes.FIRST_STEP)}
+        />
       </div>
     )
   }

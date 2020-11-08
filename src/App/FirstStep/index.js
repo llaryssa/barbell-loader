@@ -3,6 +3,7 @@ import { Component } from 'preact'
 import SelectionGroup from '../../components/SelectionGroup'
 import NumberInputGhost from '../../components/NumberInputGhost'
 import CircleButton from '../../components/CircleButton'
+import routes from '../routes'
 
 const weightUnitRadio = [
   { value: 'kg', title: 'Kg' },
@@ -18,12 +19,17 @@ const marginStyle = { marginBottom: '32px' }
 
 export default class FirstStep extends Component {
   render(
-    { onSubmit },
     {
-      weight = 100,
-      inputUnit = 'kg',
-      outputUnit = 'lb',
-      barbellType = 'female'
+      weight: propsWeight = 100,
+      inputUnit: propsInputUnit = 'kg',
+      outputUnit: propsOutputUnit = 'lb',
+      barbellType: propsBarbellType = 'female'
+    },
+    {
+      weight = propsWeight,
+      inputUnit = propsInputUnit,
+      outputUnit = propsOutputUnit,
+      barbellType = propsBarbellType
     }
   ) {
     return (
@@ -72,9 +78,18 @@ export default class FirstStep extends Component {
 
         <CircleButton
           type="arrow"
-          onClick={() =>
-            onSubmit({ inputUnit, outputUnit, weight, barbellType })
-          }
+          onClick={() => {
+            const { search } = window.location
+            const searchParams = new URLSearchParams(search)
+            searchParams.set('inputUnit', inputUnit)
+            searchParams.set('outputUnit', outputUnit)
+            searchParams.set('weight', weight)
+            searchParams.set('barbellType', barbellType)
+
+            window.location.assign(
+              `${routes.SECOND_STEP}?${searchParams.toString()}`
+            )
+          }}
         />
       </div>
     )
