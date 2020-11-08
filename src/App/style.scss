@@ -119,6 +119,10 @@ $button-circle-size: 48px;
     background-color: $app-color-1;
   }
 
+  &.left {
+    margin-right: 12px;
+  }
+
   img {
     height: 24px;
     color: $app-white;

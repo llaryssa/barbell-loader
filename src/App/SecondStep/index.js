@@ -7,9 +7,21 @@ import routes from '../routes'
 const defaultPercentageIncrease = 10
 const defaultPercentages = [50]
 
+const getPercentageIncrease = percentages => {
+  const beforeLast = percentages[percentages.length - 2]
+  const last = percentages[percentages.length - 1]
+
+  if (percentages.length < 2 || last < beforeLast)
+    return defaultPercentageIncrease
+
+  return (
+    percentages[percentages.length - 1] - percentages[percentages.length - 2]
+  )
+}
+
 const addNewPercentage = percentages => [
   ...percentages,
-  percentages[percentages.length - 1] + defaultPercentageIncrease
+  percentages[percentages.length - 1] + getPercentageIncrease(percentages)
 ]
 
 const changePercentage = (percentages, index, value) =>
@@ -60,14 +72,24 @@ export default class SecondStep extends Component {
           })}
         </div>
 
-        <CircleButton
-          type="arrow"
-          onClick={() => {
-            window.location.assign(
-              `${routes.THIRD_STEP}?${this.getSearchString(percentages)}`
-            )
-          }}
-        />
+        <div style={{ display: 'flex', alignSelf: 'center' }}>
+          <CircleButton
+            type="back_arrow"
+            onClick={() => {
+              window.location.assign(
+                `${routes.FIRST_STEP}?${this.getSearchString(percentages)}`
+              )
+            }}
+          />
+          <CircleButton
+            type="arrow"
+            onClick={() => {
+              window.location.assign(
+                `${routes.THIRD_STEP}?${this.getSearchString(percentages)}`
+              )
+            }}
+          />
+        </div>
       </div>
     )
   }

@@ -46,10 +46,20 @@ export default class ThirdStep extends Component {
           })}
         </div>
 
-        <CircleButton
-          type="home"
-          onClick={() => window.location.assign(routes.FIRST_STEP)}
-        />
+        <div style={{ display: 'flex', alignSelf: 'center' }}>
+          <CircleButton
+            type="back_arrow"
+            onClick={() => {
+              window.location.assign(
+                `${routes.SECOND_STEP}${window.location.search}`
+              )
+            }}
+          />
+          <CircleButton
+            type="home"
+            onClick={() => window.location.assign(routes.FIRST_STEP)}
+          />
+        </div>
       </div>
     )
   }
