@@ -28,8 +28,11 @@ jobs:
     - run: yarn run build:gh
 
     - name: Copy build files
-      run: mkdir build/barbell-loader && find build -maxdepth 1 -type f | xargs -I {} cp {} build/barbell-loader && cp -a build/assets build/barbell-loader
+      run: mkdir build/barbell-loader && find build -maxdepth 1 -type f | xargs -I {} cp {} build/barbell-loader
  
+    - name: Add CNAME
+      run: echo llaryssa.com > build/CNAME
+
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
       env:
