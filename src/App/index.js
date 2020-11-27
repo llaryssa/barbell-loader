@@ -15,7 +15,7 @@ const STEP_TITLES = {
 }
 
 export default class App extends Component {
-  render({}, { step = 0, data = {}, percentages = [] }) {
+  render({}, { step = 0, data, percentages }) {
     return (
       <div className="app-container">
         <Helmet title="Calculadora de pesos" />
@@ -25,19 +25,31 @@ export default class App extends Component {
           <Wizard number={step + 1} title={STEP_TITLES[step]}>
             {step === 0 && (
               <FirstStep
+                data={data}
                 onSubmit={data => this.setState({ data, step: step + 1 })}
               />
             )}
             {step === 1 && (
               <SecondStep
+                percentages={percentages}
                 onSubmit={percentages =>
                   this.setState({ percentages, step: step + 1 })
+                }
+                onBack={percentages =>
+                  this.setState({ percentages, step: step - 1 })
                 }
               />
             )}
             {step === 2 && (
               <ThirdStep
-                onSubmit={() => this.setState({ step: 0 })}
+                onSubmit={() =>
+                  this.setState({
+                    step: 0,
+                    data: undefined,
+                    percentages: undefined
+                  })
+                }
+                onBack={() => this.setState({ step: step - 1 })}
                 results={calculateResults({ ...data, percentages })}
                 resultsUnit={data.outputUnit}
               />

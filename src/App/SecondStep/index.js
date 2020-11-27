@@ -26,7 +26,10 @@ const changePercentage = (percentages, index, value) =>
   percentages.map((val, idx) => (index === idx ? Number(value) : val))
 
 export default class SecondStep extends Component {
-  render({ onSubmit }, { percentages = [50] }) {
+  render(
+    { onSubmit, onBack, percentages: percentagesFromProps },
+    { percentages = percentagesFromProps || [50] }
+  ) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <h3>Quais as porcentagens do exercício?</h3>
@@ -59,7 +62,10 @@ export default class SecondStep extends Component {
           })}
         </div>
 
-        <CircleButton type="arrow" onClick={() => onSubmit(percentages)} />
+        <div style={{ display: 'flex', alignSelf: 'center' }}>
+          <CircleButton type="back_arrow" onClick={() => onBack(percentages)} />
+          <CircleButton type="arrow" onClick={() => onSubmit(percentages)} />
+        </div>
       </div>
     )
   }

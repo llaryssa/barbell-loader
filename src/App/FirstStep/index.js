@@ -18,12 +18,12 @@ const marginStyle = { marginBottom: '32px' }
 
 export default class FirstStep extends Component {
   render(
-    { onSubmit },
+    { onSubmit, data = {} },
     {
-      weight = 100,
-      inputUnit = 'kg',
-      outputUnit = 'lb',
-      barbellType = 'female'
+      weight = data.weight || 100,
+      inputUnit = data.inputUnit || 'kg',
+      outputUnit = data.outputUnit || 'lb',
+      barbellType = data.barbellType || 'female'
     }
   ) {
     return (

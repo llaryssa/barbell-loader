@@ -7,7 +7,7 @@ const formatNumber = number => (
 )
 
 export default class ThirdStep extends Component {
-  render({ results, resultsUnit, onSubmit }) {
+  render({ results, resultsUnit, onSubmit, onBack }) {
     return (
       <div className="results">
         <div className="results__table">
@@ -31,7 +31,10 @@ export default class ThirdStep extends Component {
           })}
         </div>
 
-        <CircleButton type="home" onClick={onSubmit} />
+        <div style={{ display: 'flex', alignSelf: 'center' }}>
+          <CircleButton type="back_arrow" onClick={onBack} />
+          <CircleButton type="reload" onClick={onSubmit} />
+        </div>
       </div>
     )
   }
