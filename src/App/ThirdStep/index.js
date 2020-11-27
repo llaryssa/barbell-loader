@@ -23,8 +23,8 @@ export default class ThirdStep extends Component {
                   {resultsUnit}
                 </div>
                 <div>
-                  {formatNumber(eachSide)}
-                  {resultsUnit}
+                  {eachSide > 0 ? formatNumber(eachSide) : '--'}
+                  {eachSide > 0 && resultsUnit}
                 </div>
               </>
             )
