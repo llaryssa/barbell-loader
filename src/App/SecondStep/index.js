@@ -3,13 +3,23 @@ import { Component } from 'preact'
 import NumberInputGhost from '../../components/NumberInputGhost'
 import CircleButton from '../../components/CircleButton'
 
-const marginStyle = { marginBottom: '32px' }
-
 const defaultPercentageIncrease = 10
+
+const getPercentageIncrease = percentages => {
+  const beforeLast = percentages[percentages.length - 2]
+  const last = percentages[percentages.length - 1]
+
+  if (percentages.length < 2 || last < beforeLast)
+    return defaultPercentageIncrease
+
+  return (
+    percentages[percentages.length - 1] - percentages[percentages.length - 2]
+  )
+}
 
 const addNewPercentage = percentages => [
   ...percentages,
-  percentages[percentages.length - 1] + defaultPercentageIncrease
+  percentages[percentages.length - 1] + getPercentageIncrease(percentages)
 ]
 
 const changePercentage = (percentages, index, value) =>
