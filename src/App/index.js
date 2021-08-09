@@ -6,6 +6,7 @@ import SecondStep from './SecondStep'
 import ThirdStep from './ThirdStep'
 import Wizard from './Wizard'
 import { calculateResults } from './helpers'
+import '../gtm.js'
 import './style.scss'
 
 const STEP_TITLES = {
