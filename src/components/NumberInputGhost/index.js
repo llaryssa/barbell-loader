@@ -10,6 +10,7 @@ export default class NumberInputGhost extends Component {
         placeholder={placeholder}
         value={value}
         type="number"
+        inputmode="numeric"
         onChange={event => onChange(event.target.value)}
       />
     )
