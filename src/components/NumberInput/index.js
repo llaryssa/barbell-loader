@@ -9,7 +9,8 @@ export default class NumberInput extends Component {
         hideLabel
         placeholder={placeholder}
         value={value}
-        type="number"
+        //type="number"
+        inputmode="numeric"
         onChange={event => onChange(event.target.value)}
         cell={{
           middle: true,
