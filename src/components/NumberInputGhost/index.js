@@ -9,7 +9,7 @@ export default class NumberInputGhost extends Component {
         hideLabel
         placeholder={placeholder}
         value={value}
-        //type="number"
+        type="number"
         inputmode="numeric"
         onChange={event => onChange(event.target.value)}
       />
