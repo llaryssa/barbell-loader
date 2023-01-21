@@ -26,6 +26,7 @@ var calculateResults = ({
     var convertedWeight = willConvert
       ? convertWeight(weight, inputUnit, outputUnit)
       : Number(weight)
+
     var total = willApplyPercentage
       ? (percentage * convertedWeight) / 100
       : convertedWeight
