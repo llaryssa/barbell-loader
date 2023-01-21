@@ -31,7 +31,7 @@ jobs:
       run: mkdir build/barbell-loader && find build -maxdepth 1 -type f | xargs -I {} cp {} build/barbell-loader
  
     - name: Add CNAME
-      run: echo llaryssa.com > build/CNAME
+      run: echo calculadoradepesos.com > build/CNAME
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
